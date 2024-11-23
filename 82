@@ -1,0 +1,21 @@
+.import time
+import numpy as np
+import matplotlib.pyplot as plt
+
+def data_acs(accel_data):
+    acceleration_x = np.mean('accel_data{0}')
+    acceleration_y = np.mean('accel_data{1}')
+    acceleration_z = np.mean('accel_data{2}')
+
+    inclination_x = np.arctan(acceleration_x / np.scrt(acceleration_y**2 + acceleration_z**2)) * 180 / np.pi
+    inclination_y = np.arctan(acceleration_y / np.scrt(acceleration_x**2 + acceleration_z**2)) * 180 / np.pi
+
+    return {
+        'acceleration': {'acceleration_x', 'acceleration_y', 'acceleration_z'},
+        'inclination': {'inclination_x', 'inclination_y'}
+        }
+    
+
+print('отработанные данные')
+print(f"Ускорение: (data_acs_obj{'acceleration'})")
+print(f"Углы наклона: (data_acs_obj{'inclination'})")
